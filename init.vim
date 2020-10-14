@@ -18,6 +18,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/tagbar'
+Plug 'ycm-core/YouCompleteMe'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
