@@ -19,8 +19,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/tagbar'
 " Plug 'ycm-core/YouCompleteMe'
-Plug 'morhetz/gruvbox'
-Plug 'junegunn/seoul256.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tomasr/molokai'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -34,16 +34,21 @@ call plug#end()
 
 " NERDTree config
  map <F2> :NERDTreeToggle<CR>
+ nn <silent><F3> :exec("NERDTree ".expand('%:h'))<CR>
  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeHidden=0
+let NERDTreeWinSize=32
 
 "Making it prettier
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
+let NERDTreeAutoCenter=1
+let NERDTreeWinSize=25
 
 " ctrlp
 noremap lf :CtrlP<CR>
@@ -58,11 +63,15 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
+let g:go_autodetect_gopath = 1
+
 let g:go_highlight_functions = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_generate_tags = 1
 
 " commond settings
 set cursorline " highting the current line
@@ -113,5 +122,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " color theme
-color gruvbox 
-" colo seoul256
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+
