@@ -18,9 +18,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/tagbar'
-" Plug 'ycm-core/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
+Plug 'puremourning/vimspector'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -126,3 +126,26 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
 
+" warning
+let g:coc_disable_startup_warning = 1
+
+let g:vimspector_enable_mappings = 'HUMAN'
+nmap <leader>vr :VimspectorReset<CR>
+nmap <leader>ve :VimspectorEval
+nmap <leader>vw :VimspectorWatch
+nmap <leader>vo :VimspectorShowOutput
+nmap <leader>vi <Plug>VimspectorBalloonEval
+xmap <leader>vi <Plug>VimspectorBalloonEval
+
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+
+" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
+
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go' ]
+
+" coc config
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
